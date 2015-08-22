@@ -40,6 +40,7 @@ setup(
     maintainer=twitter_email_hunter.__author__,
     author_email=twitter_email_hunter.__email__,
     license=twitter_email_hunter.__license__,
+    py_modules=['main'],
     packages=['twitter_email_hunter'],
     install_requires=[
         'click==5.1',
