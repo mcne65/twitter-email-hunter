@@ -1,6 +1,6 @@
 # Twitter email hunter
 
-*Use this at your own risk. Try not to invade people's privacy. They don't like it (I've been told so).*
+**Use this at your own risk. Try not to invade people's privacy. They don't like it (I've been told so).**
 
 This is a simple tool that will help you locate someone's email address from his/her twitter timeline. I've just tested it with Python3, although a tox setup PR would be highly appreciated.
 
