@@ -12,23 +12,82 @@ from twitter_email_hunter.utils import extract_email
 from twitter_email_hunter.models import Tweets, Result
 
 
-def test_matcher():
-    text = 'Some text test-1@example.com'
-    assert 'test-1@example.com' == extract_email(text, 'example.com')
+class ExtractEmailTestCase(unittest.TestCase):
+    def test_extract_email(self):
+        text = 'Some text test-1@example.com'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
 
-    text = 'Some text test-1@example.com with something at the end'
-    assert 'test-1@example.com' == extract_email(text, 'example.com')
+        text = 'Some text test-1@example.com with something at the end'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
 
-    text = ('Some text test-1@example.com with something at the'
-            'end and other email like john@example.com')
-    assert 'test-1@example.com' == extract_email(text, 'example.com')
+        text = ('Some text test-1@example.com with something at the'
+                'end and other email like john@example.com')
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
 
-    text = ('Some text test-1@example1.com with something at the'
-            'end and other email like john@example.com')
-    assert 'john@example.com' == extract_email(text, 'example.com')
+        text = ('Some text test-1@example1.com with something at the'
+                'end and other email like john@example.net')
+        self.assertEqual(
+            'john@example.net', extract_email(text, 'example.net'))
 
-    text = 'test-1@example.com at the begginning'
-    assert 'test-1@example.com' == extract_email(text, 'example.com')
+        text = 'test-1@example.com at the begginning'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
+
+    def test_extract_with_domain_and_brackets(self):
+        text = 'Some text bewtween brackets (test-1@example.com)'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
+
+        text = 'Some text start with bracket (test-1@example.com'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
+
+        text = 'Some text bewtween brackets {test-1@example.com}'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
+
+        text = 'Some text bewtween brackets [test-1@example.com]'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text, 'example.com'))
+
+    def test_extract_email_without_domain(self):
+        text = 'Some text test-1@example.com'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        text = 'Some text test-1@example.com with something at the end'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        # Finds first email
+        text = ('Some text test-1@example.com with something at the'
+                'end and other email like john@example.com')
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        text = 'test-1@example.com at the begginning'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+    def test_extract_without_domain_and_brackets(self):
+        text = 'Some text bewtween brackets (test-1@example.com)'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        text = 'Some text start with bracket (test-1@example.com'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        text = 'Some text bewtween brackets {test-1@example.com}'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
+
+        text = 'Some text bewtween brackets [test-1@example.com]'
+        self.assertEqual(
+            'test-1@example.com', extract_email(text))
 
 
 class TweetsIteratorTestCase(unittest.TestCase):

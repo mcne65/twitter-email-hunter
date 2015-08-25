@@ -1,8 +1,15 @@
 import re
 
 
-def extract_email(text, domain):
-    res = re.search(r'([^\s\\]*)@{}'.format(domain), text, re.I)
+def extract_email(text, domain=None):
+    pattern = r'([^\s\\(\{\[]*)'
+    domain_pattern = r'(\w+\.)*(\w+)\.(\w+)(\/.*)?'
+    if domain:
+        regexp = pattern + r'@{}'.format(domain)
+    else:
+        regexp = pattern + r'@' + domain_pattern
+
+    res = re.search(regexp, text, re.I)
     if res:
         return res.group()
 
