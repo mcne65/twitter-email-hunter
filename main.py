@@ -21,13 +21,13 @@ def show_results(results):
 @click.command(help="Search for emails from a twitter profile")
 @click.option('--handle', '-h', required=True,
               help="Twitter handle (eg: @rmotr_com).")
-@click.option('--domain', '-d', required=True,
+@click.option('--domain', '-d', required=False,
               help="Domain of emails. Will look for emails just in that domain")
 @click.option('--consumer-key', '-k', envvar='TWITTER_CONSUMER_KEY', required=True,
               help="Create an app and get your keys from dev.twitter.com")
 @click.option('--secret-key', '-s', envvar='TWITTER_SECRET_KEY', required=True,
               help="Create an app and get your keys from dev.twitter.com")
-def interactive_search_emails(handle, domain, consumer_key, secret_key):
+def interactive_search_emails(handle, domain=None, consumer_key=None, secret_key=None):
     auth = tweepy.AppAuthHandler(consumer_key, secret_key)
     api = tweepy.API(auth)
     results = []
@@ -46,5 +46,5 @@ def interactive_search_emails(handle, domain, consumer_key, secret_key):
         show_results(results)
 
 
-# if __name__ == '__main__':
-#     interactive_search_emails()
+if __name__ == '__main__':
+    interactive_search_emails()
