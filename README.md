@@ -24,6 +24,8 @@ Look for any emails on our timeline (interactive):
 
     $ twitter-email-hunt -h rmotr_com -k [CONSUMER_KEY] -s [SECRET_KEY] --interactive
 
+![http://i.imgur.com/2bTIEnr.png](http://i.imgur.com/2bTIEnr.png)
+
 Look for any emails on our timeline that are just from our domain (interactive):
 
     $ twitter-email-hunt -h rmotr_com -d rmotr.com -k [CONSUMER_KEY] -s [SECRET_KEY] --interactive
@@ -31,6 +33,8 @@ Look for any emails on our timeline that are just from our domain (interactive):
 Non interactive example:
 
     $ twitter-email-hunt -h rmotr_com -d rmotr.com -k [CONSUMER_KEY] -s [SECRET_KEY]
+
+![http://i.imgur.com/4PHdv2z.png](http://i.imgur.com/4PHdv2z.png)
 
 # Twitter keys
 
