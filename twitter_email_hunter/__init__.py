@@ -1,5 +1,5 @@
 __title__ = 'twitter_email_hunter'
-__version__ = '1.0.1'
+__version__ = '1.1.0'
 __author__ = 'Santiago Basulto'
 __email__ = 'santiago@rmotr.com'
 __license__ = 'MIT'
