@@ -17,16 +17,16 @@ You can set your twitter keys as environment variables to ease usage. See sectio
 
 # Usages and examples
 
-There are two main modes you can choose *interactive* and *non-interactive*. **Interactive** mode will stop every time it finds an email and will ask you if you want to keep looking, and it'll report after it's done.
+There are two main modes you can choose *interactive* (default) and *non-interactive*. **Interactive** mode will stop every time it finds an email and will ask you if you want to keep looking, and it'll report after it's done.
 **Non interactive** will just process until you stop the script with Ctrl-C. It'll show a report after you kill it.
 
 Look for any emails on our timeline (interactive):
 
-    $ twitter-email-hunt -h rmotr_com -k [CONSUMER_KEY] -s [SECRET_KEY]
+    $ twitter-email-hunt -h rmotr_com -k [CONSUMER_KEY] -s [SECRET_KEY] --interactive
 
 Look for any emails on our timeline that are just from our domain (interactive):
 
-    $ twitter-email-hunt -h rmotr_com -d rmotr.com -k [CONSUMER_KEY] -s [SECRET_KEY]
+    $ twitter-email-hunt -h rmotr_com -d rmotr.com -k [CONSUMER_KEY] -s [SECRET_KEY] --interactive
 
 Non interactive example:
 
