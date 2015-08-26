@@ -29,7 +29,9 @@ def show_results(results):
 @click.option('--secret-key', '-s',
               envvar='TWITTER_SECRET_KEY', required=True,
               help="Create an app and get your keys from dev.twitter.com")
-@click.option('--interactive/--no-interactive', default=False)
+@click.option('--interactive/--no-interactive', default=False,
+              help="The script will print everytime it "
+              "finds an email address and will ask if you want to stop it.")
 def interactive_search_emails(handle, domain, consumer_key,
                               secret_key, interactive):
     auth = tweepy.AppAuthHandler(consumer_key, secret_key)
