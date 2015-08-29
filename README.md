@@ -1,3 +1,5 @@
+![Travis status](https://travis-ci.org/rmotr/twitter-email-hunter.svg)
+
 # Twitter email hunter
 
 **Use this at your own risk. Try not to invade people's privacy. They don't like it (I've been told so).**
