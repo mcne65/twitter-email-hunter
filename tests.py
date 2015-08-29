@@ -1,8 +1,11 @@
+import six
 import unittest
-try:
+if six.PY3:
     from unittest import mock
-except ImportError:
+    next_method = '__next__'
+else:
     import mock
+    next_method = 'next'
 
 from tweepy import API
 from tweepy.models import Status, User
@@ -153,7 +156,7 @@ class SearchEmailTestCase(unittest.TestCase):
             iteration['counter'] += 1
             return mocked_tweets[iteration['counter']]
 
-        with mock.patch.object(Tweets, '__next__', new=_next):
+        with mock.patch.object(Tweets, next_method, new=_next):
 
             results = search_emails(api, 'rmotr_com', 'rmotr.com')
             result = next(results)

@@ -1,0 +1,2 @@
+[run]
+omit = twitter_email_hunter/__init__.py
